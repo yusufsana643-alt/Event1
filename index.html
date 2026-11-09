@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gather | Campus and city events</title>
+<meta name="description" content="Browse upcoming events, view details and register in seconds.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="nav">
+  <a class="logo" href="#top">Gather</a>
+  <nav>
+    <a href="#events">Events</a>
+    <a href="#about">How it works</a>
+    <button id="regBtn" class="link-btn" aria-label="View my registrations">My tickets <span id="regCount">0</span></button>
+    <button id="themeBtn" class="icon-btn" aria-label="Toggle dark mode">&#9680;</button>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Find your next great night out, workshop or hackathon.</h1>
+      <p>Browse events happening near you, pick what fits, and reserve a seat in under a minute.</p>
+      <a class="btn" href="#events">Browse events</a>
+    </div>
+    <aside class="next" aria-live="polite">
+      <p class="next-label">Next up</p>
+      <h2 id="nextTitle"></h2>
+      <p id="nextMeta"></p>
+      <div class="timer" id="timer"></div>
+      <button class="btn small" id="nextBtn">Reserve a seat</button>
+    </aside>
+  </section>
+
+  <section id="events" class="wrap">
+    <div class="head">
+      <h2>Upcoming events</h2>
+      <input id="search" type="search" placeholder="Search by name, venue or keyword" aria-label="Search events">
+    </div>
+    <div class="chips" id="chips" role="tablist" aria-label="Filter by category"></div>
+    <div class="grid" id="grid"></div>
+    <p id="empty" class="empty" hidden>No events match your search. Clear the search or pick another category.</p>
+  </section>
+
+  <section id="about" class="wrap steps">
+    <h2>How it works</h2>
+    <ol>
+      <li><b>Explore.</b> Search or filter by category.</li>
+      <li><b>Check details.</b> Open a card for the full schedule and venue.</li>
+      <li><b>Register.</b> Fill in four fields and get instant confirmation.</li>
+    </ol>
+  </section>
+</main>
+
+<footer>Built with HTML, CSS and JavaScript. Registrations are stored in your browser only.</footer>
+
+<dialog id="modal">
+  <button class="close" id="closeModal" aria-label="Close">&times;</button>
+  <div id="detail"></div>
+  <form id="form" novalidate>
+    <h3>Register for this event</h3>
+    <label>Full name<input name="name" autocomplete="name" required><small class="err"></small></label>
+    <label>Email<input name="email" type="email" autocomplete="email" required><small class="err"></small></label>
+    <label>Phone number<input name="phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="10 digit mobile number" required><small class="err"></small></label>
+    <label>Event<select name="event" required></select><small class="err"></small></label>
+    <button class="btn" type="submit">Confirm registration</button>
+  </form>
+  <div id="done" hidden></div>
+</dialog>
+
+<dialog id="tickets"><button class="close" id="closeTickets" aria-label="Close">&times;</button><h3>My tickets</h3><ul id="ticketList"></ul></dialog>
+
+<script src="script.js"></script>
+</body>
+</html>
